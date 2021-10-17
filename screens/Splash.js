@@ -1,10 +1,20 @@
 import React, {Component} from 'react';
-import {View, Image, StyleSheet, Text} from 'react-native';
+import {View, Image, StyleSheet, Text, Button} from 'react-native';
+import { LOGIN } from '../constants/routeNames';
 
 class Splash extends Component {
-  constructor() {
-    super(this.props);
+  componentDidMount() {
+    console.log('Mount');
+    // this._interval = setInterval(() => {
+    //   this.props.navigation.navigate('Login');
+    // }, 4000);
   }
+
+  componentWillUnmount() {
+    console.log('Unmount');
+    // clearInterval(this._interval);
+  }
+
   render() {
     return (
       <View style={styles.logoContainer}>
@@ -15,11 +25,13 @@ class Splash extends Component {
           }}
           style={{width: 90, height: 90}}
         />
-        <Text style={styles.text}>My App</Text>
-        <Button
-          title="Go to Login"
-          onPress={() => this.navigation.navigate('Login')}
-        />
+        <Text
+          onPress={() => {
+            this.props.navigation.navigate(LOGIN);
+          }}
+          style={styles.text}>
+          My App
+        </Text>
       </View>
     );
   }
